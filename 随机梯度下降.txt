@@ -1,0 +1,34 @@
+theta_path_sgd =[]
+m = len(X_b)
+np.random.seed(42)
+
+n_epochs=50
+
+np.random.randn(2,1) 
+
+for epoch in range(n_epochs):
+for i in range(m):
+if epoch == 0 and i < 20:
+y_predict = X_new_b.dot(theta)
+style =“b-”
+plt.plot(X_new,y_predict, style)
+random_index = np.random.randint(m)
+xi = X_b[random_index:random_index+1]
+yi = y[random_index:random_index+1]
+gradients =2 * xi.T.dot(xi.dot(theta)- yi)
+eta =0.1
+theta = theta- eta * gradients
+theta_path_sgd.append(theta)
+plt.plot(X,y,“b.”)
+plt.xlabel("x 1 x_1x 
+1
+​
+ ",fontsize=18)
+plt.ylabel("y yy",rotation=0,fontsize=18)
+plt.axis([0,2,0,15])
+save_fig(“sgd_plot”)
+plt.show()
+
+from sklearn.linear_model import SGDRegressor
+sgd_reg = SGDRegressor(max_iter=50,tol = -np.infty,penalty=None,eta0=0.1,random_state=42)
+sgd_reg.fit(X,y.ravel())
